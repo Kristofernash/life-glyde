@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
+
 const Auth = new AuthService();
 
 class App extends Component {
@@ -10,6 +11,8 @@ class App extends Component {
   state = {
     userId: this.props.user.id,
     profileLink: ""
+    
+
   };
 
   componentDidMount() {
@@ -18,6 +21,9 @@ class App extends Component {
       profileLink: profileLinkURL
     });
   }
+
+
+  
 
   handleLogout = () => {
     Auth.logout();
