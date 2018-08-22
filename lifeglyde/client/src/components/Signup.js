@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+/* import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import AuthService from './AuthService';
 import API from '../utils/API';
@@ -75,4 +75,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default Signup; */
