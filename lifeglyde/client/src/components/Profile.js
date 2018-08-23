@@ -6,16 +6,18 @@ import ImageUploader from 'react-images-upload';
 class Profile extends Component {
 
   state = {
+    pictures:[],
     username: "",
     email: "",
-    pictures:[]
+    bio:"",
   };
-
+  
   componentDidMount() {
     API.getUser(this.props.user.id).then(res => {
       this.setState({
         username: res.data.username,
-        email: res.data.email
+        email: res.data.email,
+        bio:res.data.bio
       })
     });
     this.onDrop=this.onDrop.bind(this);
@@ -32,6 +34,7 @@ class Profile extends Component {
         <h1>Your Profile Page</h1>
         <p>Username: {this.state.username}</p>
         <p>Email: {this.state.email}</p>
+        <p>Bio:{this.state.bio}</p>
         <Link to="/">Go home</Link>
         <ImageUploader
                 withIcon={true}
