@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
+import API from "../utils/API";
 
 export default class Profileform extends Component {
-
+    
     state = {
+        id: this.props.userId,
         firstName: '',
         lastName: '',
         phoneNum: '',
@@ -24,6 +26,9 @@ export default class Profileform extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
+        API.updateUser(this.state)
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err));
     }
 
     render() {

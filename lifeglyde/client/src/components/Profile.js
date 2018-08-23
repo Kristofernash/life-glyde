@@ -29,7 +29,7 @@ class Profile extends Component {
         <p>Username: {this.state.username}</p>
         <p>Email: {this.state.email}</p>
         <Link to="/">Go home</Link>
-        <Profileform />
+        <Profileform userId={this.props.user.id}/>
         
       </div>
       </div>
