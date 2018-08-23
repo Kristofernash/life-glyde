@@ -1,8 +1,9 @@
 /* BACKGROUND PHOTO */
-body{
+.first{
    background-image: url("../../images/paragliding.png");
    background-repeat: no-repeat;
    background-size: cover;
+   height: 100vh;
 }
 /* LG LOGO */
 .L{
