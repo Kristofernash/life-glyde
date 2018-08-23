@@ -1,0 +1,66 @@
+/* BACKGROUND PHOTO */
+body{
+   background-image: url("../../images/paragliding.png");
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+/* LG LOGO */
+.L{
+    display: inline-block ;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:100;
+    font-size:100px;
+    color:#c9fdd7;
+    margin-top:40px;
+    margin-left:40px;
+    text-shadow: 2px 2px #313030;
+
+}
+.G{
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:900;
+    font-size:140px;
+    color:#6b69d6 ;
+    text-shadow: 2px 2px #313030;
+
+}
+.title{
+    font-family: 'Montserrat', sans-serif;
+    font-weight:100;
+    font-size:20px;
+    color:#6b69d6 ;
+    margin-left:48px;
+    letter-spacing: 4px;
+    margin-top:-10px;
+    text-shadow: 2px 2px #313030;
+
+}
+/* SLOGAN */
+.subtitle{
+    font-family: 'Montserrat', sans-serif;
+    background: -webkit-linear-gradient(#eee,#313030);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Roboto', sans-serif;
+    font-weight:700;
+    font-size:80px;
+    margin-top:55px;
+    margin-left:30px;
+
+}
+
+.description{
+    margin-top:20px;
+    margin-left:30px;
+    color:#313030;
+    font-family: 'Roboto', sans-serif;
+    font-weight:600;
+    letter-spacing: 3px;
+
+
+}
+span{
+    font-size:30px;
+    cursor:pointer;
+}
