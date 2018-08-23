@@ -13,6 +13,8 @@ body{
     color:#c9fdd7;
     margin-top:40px;
     margin-left:40px;
+    text-shadow: 2px 2px #313030;
+
 }
 .G{
     display: inline-block;
@@ -20,6 +22,7 @@ body{
     font-weight:900;
     font-size:140px;
     color:#6b69d6 ;
+    text-shadow: 2px 2px #313030;
 
 }
 .title{
@@ -30,6 +33,8 @@ body{
     margin-left:48px;
     letter-spacing: 4px;
     margin-top:-10px;
+    text-shadow: 2px 2px #313030;
+
 }
 /* SLOGAN */
 .subtitle{
@@ -52,6 +57,7 @@ body{
     font-family: 'Roboto', sans-serif;
     font-weight:600;
     letter-spacing: 3px;
+
 
 }
 span{

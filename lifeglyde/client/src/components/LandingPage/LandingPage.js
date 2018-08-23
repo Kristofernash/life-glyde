@@ -2,7 +2,7 @@ import React from "react";
 import "./LandingPage.css"; 
 
 const LandingPage = (props) => (
-<div class="first">
+<div className="first">
    <h1 className="L">L</h1><h1 className="G">G</h1>
    <h2 className="title">LIFE GLYDE</h2>
    <h2 className="subtitle">ADVENTURE <br></br>SMARTER.</h2>

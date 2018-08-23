@@ -5,6 +5,9 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import { mailFolderListItems} from './tileData';
+import Login from "../Login";
+
+import "./NavBar.css"; 
 
 const styles = {
   list: {
@@ -12,7 +15,7 @@ const styles = {
   },
   fullList: {
     width: 'auto',
-  },
+  }
 };
 
 class TemporaryDrawer extends React.Component {
@@ -41,13 +44,15 @@ class TemporaryDrawer extends React.Component {
 
 
     return (
-      <div>
+      <div> 
         <Button onClick={this.toggleDrawer('right', true)}>Open Right</Button>
         <Drawer anchor="right" open={this.state.right} onClose={this.toggleDrawer('right', false)}>
           <div
             tabIndex={0}
             role="button"
             onClick={this.toggleDrawer('right', false)}
+            onClick={this.toggleDrawer('right', false)}
+
             onKeyDown={this.toggleDrawer('right', false)}
           >
             {sideList}
