@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
-
 import Site from "./components/Site";
 
 const Auth = new AuthService();
@@ -12,6 +11,8 @@ class App extends Component {
   state = {
     userId: this.props.user.id,
     profileLink: ""
+    
+
   };
 
   componentDidMount() {
@@ -20,6 +21,9 @@ class App extends Component {
       profileLink: profileLinkURL
     });
   }
+
+
+  
 
   handleLogout = () => {
     Auth.logout();
