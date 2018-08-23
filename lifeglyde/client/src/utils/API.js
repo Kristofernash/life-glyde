@@ -7,5 +7,8 @@ export default {
   // sign up a user to our service
   signUpUser: (username, email, password) => {
     return axios.post('api/signup', {username: username, email: email, password: password});
+  },
+  updateUser: (user) => {
+    return axios.put(`/api/user/${user.id}`, user);
   }
 };
