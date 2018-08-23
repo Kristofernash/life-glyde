@@ -3,6 +3,12 @@
     margin:3px;
 
 }
+.SignIn:target{ 
+    text-decoration: underline;
+}
+.SignUp:focus { 
+    text-decoration: underline;
+}
 .SignUp{
     display: inline-block ;
     margin:3px;
@@ -36,4 +42,11 @@
     border-color:#c9fdd7;
     border-width:6px;
     color:#313030;
+}
+.cornerBtn{
+    border-radius: 50px 20px;
+    background-color:#6b69d6;
+    position:absolute;
+    top:0;
+    right:0;
 }

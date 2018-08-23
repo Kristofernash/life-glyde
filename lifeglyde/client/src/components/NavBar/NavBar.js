@@ -2,10 +2,8 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import { mailFolderListItems} from './tileData';
-import Login from "../Login";
+import SideList from '../SideList/sideList';
+
 
 import "./NavBar.css"; 
 
@@ -24,7 +22,16 @@ class TemporaryDrawer extends React.Component {
     left: false,
     bottom: false,
     right: false,
+    form: false,
   };
+
+  loginClicked = () => {
+    this.setState({ form: false })
+  }
+
+  signupClicked = () => {
+    this.setState({ form: true })
+  }
 
   toggleDrawer = (side, open) => () => {
     this.setState({
@@ -35,27 +42,17 @@ class TemporaryDrawer extends React.Component {
   render() {
     const { classes } = this.props;
 
-    const sideList = (
-      <div className={classes.list}>
-        <List>{mailFolderListItems}</List>
-        <Divider />
-      </div>
-    );
-
-
     return (
       <div> 
-        <Button onClick={this.toggleDrawer('right', true)}>Open Right</Button>
+        <Button class="cornerBtn" onClick={this.toggleDrawer('right', true)}>Open Right</Button>
         <Drawer anchor="right" open={this.state.right} onClose={this.toggleDrawer('right', false)}>
           <div
             tabIndex={0}
             role="button"
-            onClick={this.toggleDrawer('right', false)}
-            onClick={this.toggleDrawer('right', false)}
-
-            onKeyDown={this.toggleDrawer('right', false)}
+            // onClick={this.toggleDrawer('right', false)}
+            // onKeyDown={this.toggleDrawer('right', false)}
           >
-            {sideList}
+            <SideList classes={classes} loginClicked={this.loginClicked} signupClicked={this.loginClicked} form={this.state.form} />
           </div>
         </Drawer>
       </div>
