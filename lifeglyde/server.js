@@ -86,6 +86,15 @@ app.get("/api/user/:id", isAuthenticated, (req, res) => {
     .catch(err => res.status(400).send(err));
 });
 
+app.put("/api/user/:id", (req, res)=> {
+  db.User.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    .then(userDb => {
+      res.json(userDb);
+    }).catch(err => {
+      res.status(400).json(err);
+    });
+});
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
