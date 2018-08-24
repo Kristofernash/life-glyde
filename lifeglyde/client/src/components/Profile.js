@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import withAuth from './withAuth';
 import API from '../utils/API';
 import { Link } from 'react-router-dom';
+import ImageUploader from 'react-images-upload';
+import Profileform from './Profileform';
 
 class Profile extends Component {
 
   state = {
     username: "",
-    email: ""
+    email: "",
+    pictures:[]
   };
 
   componentDidMount() {
@@ -17,18 +20,38 @@ class Profile extends Component {
         email: res.data.email
       })
     });
+    this.onDrop=this.onDrop.bind(this);
   }
+  onDrop(picture) {
+    this.setState({
+        pictures: this.state.pictures.concat(picture),
+    });
+}
 
   render() {
     return (
+      <div>
+      
       <div className="container Profile">
-        <h1>On the profile page!</h1>
+        <h1>Your Profile Page</h1>
         <p>Username: {this.state.username}</p>
         <p>Email: {this.state.email}</p>
         <Link to="/">Go home</Link>
+        <ImageUploader
+                withIcon={true}
+                buttonText='Choose images'
+                onChange={this.onDrop}
+                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                maxFileSize={5242880}
+            />
+        <Profileform userId={this.props.user.id}/>
+        
       </div>
+      </div>
+
+
     )
   }
 }
-
+// Need to add in a button that submits a form that takes in emergencycontact name and phone
 export default withAuth(Profile);
