@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import AuthService from './components/AuthService';
-import withAuth from './components/withAuth';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import AuthService from "./components/AuthService";
+import withAuth from "./components/withAuth";
+import Form from "./components/Form";
+
 const Auth = new AuthService();
 
 class App extends Component {
-
   state = {
     userId: this.props.user.id,
     profileLink: ""
@@ -21,11 +22,15 @@ class App extends Component {
 
   handleLogout = () => {
     Auth.logout();
-    this.props.history.replace('/signup');
+    this.props.history.replace("/signup");
   };
 
   goToEditProfile = () => {
     this.props.history.replace(this.state.profileLink);
+  };
+
+  onSubmit = fields => {
+    console.log("app comp got: ", fields);
   };
 
   render() {
@@ -37,9 +42,24 @@ class App extends Component {
           <h2>Welcome {this.props.user.email}</h2>
         </div>
         <p className="App-intro">
-          <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button>
-          <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={this.goToEditProfile}
+          >
+            Go to Profile
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={this.handleLogout}
+          >
+            Logout
+          </button>
         </p>
+        <div className="App">
+          <Form onSubmit={fields => this.onSubmit(fields)} />
+        </div>
       </div>
     );
   }

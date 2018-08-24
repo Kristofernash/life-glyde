@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import withAuth from './withAuth';
-import API from '../utils/API';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import withAuth from "./withAuth";
+import API from "../utils/API";
+import { Link } from "react-router-dom";
 
 class Profile extends Component {
-
   state = {
     username: "",
     email: ""
@@ -15,7 +14,7 @@ class Profile extends Component {
       this.setState({
         username: res.data.username,
         email: res.data.email
-      })
+      });
     });
   }
 
@@ -27,7 +26,7 @@ class Profile extends Component {
         <p>Email: {this.state.email}</p>
         <Link to="/">Go home</Link>
       </div>
-    )
+    );
   }
 }
 
