@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import withAuth from './withAuth';
 import API from '../utils/API';
@@ -6,7 +7,6 @@ import ImageUploader from 'react-images-upload';
 import Profileform from './Profileform';
 
 class Profile extends Component {
-
   state = {
     username: "",
     email: "",
@@ -18,7 +18,7 @@ class Profile extends Component {
       this.setState({
         username: res.data.username,
         email: res.data.email
-      })
+      });
     });
     this.onDrop=this.onDrop.bind(this);
   }
@@ -48,10 +48,9 @@ class Profile extends Component {
         
       </div>
       </div>
-
-
     )
   }
 }
 // Need to add in a button that submits a form that takes in emergencycontact name and phone
 export default withAuth(Profile);
+
