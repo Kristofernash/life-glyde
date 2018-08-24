@@ -1,12 +1,6 @@
 import React from "react";
 import "./ProfileNav.css"; 
 import AuthService from '../AuthService';
-let NavItem=require("react-bootstrap/lib/NavItem");
-let Nav=require("react-bootstrap/lib/Nav");
-let NavDropdown=require("react-bootstrap/lib/NavDropdown");
-let MenuItem=require("react-bootstrap/lib/MenuItem");
-let Navbar=require("react-bootstrap/lib/Navbar");
-
 
 class ProfileNav extends React.Component{
   constructor() {
@@ -43,7 +37,7 @@ class ProfileNav extends React.Component{
         <a class="nav-link" href="/profile">Profile</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" button id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">

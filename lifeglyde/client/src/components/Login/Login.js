@@ -34,7 +34,7 @@ class Login extends Component {
     return (
       <div className="container">
         <h1>Login</h1>
-        <form autocomplete="off" onSubmit={this.handleFormSubmit}>
+        <form autoComplete="off" onSubmit={this.handleFormSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email address:</label>
             <input className="form-control"

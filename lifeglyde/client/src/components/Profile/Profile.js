@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import withAuth from '../withAuth';
 import API from '../../utils/API';
-import { Link } from 'react-router-dom';
 import ImageUploader from './ImageUploader.js';
 import Profileform from './Profileform';
 import AuthService from '../AuthService';
@@ -46,7 +45,7 @@ class Profile extends Component {
       <div>
        <div className="container Profile">
         <h1>Your Profile Page</h1>
-        <p>Username: {this.state.username}</p>
+        <p >Username: {this.state.username}</p>
         <p>Email: {this.state.email}</p>
         <ImageUploader
                 withIcon={true}
