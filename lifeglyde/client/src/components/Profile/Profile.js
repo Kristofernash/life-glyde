@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
-import withAuth from './withAuth';
-import API from '../utils/API';
-import { Link } from 'react-router-dom';
-import ImageUploader from 'react-images-upload';
+import withAuth from '../withAuth';
+import API from '../../utils/API';
+import ImageUploader from './ImageUploader.js';
 import Profileform from './Profileform';
+import AuthService from '../AuthService';
+import "./Profile.css"; 
+
+
 
 class Profile extends Component {
-
-  state = {
+  constructor() {
+    super();
+    this.Auth = new AuthService();
+    this.state = {
     username: "",
     email: "",
-    pictures:[]
-  };
+    pictures:[],
+    loggedIn: true
+  }
+  }
+
+  clickedLogout = () => {
+    this.Auth.logout();
+    this.props.history.replace('/')
+  }
 
   componentDidMount() {
     API.getUser(this.props.user.id).then(res => {
@@ -31,12 +43,10 @@ class Profile extends Component {
   render() {
     return (
       <div>
-      
-      <div className="container Profile">
+       <div className="container Profile">
         <h1>Your Profile Page</h1>
-        <p>Username: {this.state.username}</p>
+        <p >Username: {this.state.username}</p>
         <p>Email: {this.state.email}</p>
-        <Link to="/">Go home</Link>
         <ImageUploader
                 withIcon={true}
                 buttonText='Choose images'

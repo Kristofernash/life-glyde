@@ -21,13 +21,16 @@
   },
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
+    "body": "^5.1.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "body": "^5.1.0",
     "express-jwt": "^5.3.1",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.1.0",
     "morgan": "^1.9.0",
-    "parser": "^0.1.4"
+    "react": "^16.4.2",
+    "react-bootstrap": "^0.32.3",
+    "react-dom": "^16.4.2",
+    "react-images-upload": "^1.2.2"
   }
 }
