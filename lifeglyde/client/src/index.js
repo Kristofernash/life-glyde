@@ -12,7 +12,7 @@ import Login from './components/Login/Login';
 import Profile from './components/Profile';
 import Signup from './components/SignUp/Signup';
 import Site from './components/Site';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar/index';
 
 
 if(localStorage.getItem("id_token")) {
