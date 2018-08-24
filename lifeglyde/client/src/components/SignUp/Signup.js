@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import AuthService from '../AuthService';
 import API from '../../utils/API';
 
@@ -7,12 +6,6 @@ class Signup extends Component {
   constructor() {
     super();
     this.Auth = new AuthService();
-  }
-
-  componentWillMount() {
-    if (this.Auth.loggedIn()) {
-      this.props.history.replace('/');
-    }
   }
 
   handleFormSubmit = event => {

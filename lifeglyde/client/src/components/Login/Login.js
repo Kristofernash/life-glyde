@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import AuthService from "../AuthService";
-import {Link} from 'react-router-dom';
 
 class Login extends Component {
   constructor() {
@@ -8,11 +7,6 @@ class Login extends Component {
     this.Auth = new AuthService();
   }
 
-  componentWillMount() {
-    if (this.Auth.loggedIn()) {
-      this.props.history.replace('/');
-    }
-  }
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -25,7 +19,7 @@ class Login extends Component {
       })
       .catch(err => {
         console.log(err.response);
-        alert(err.response.data.message)
+        alert(err.response)
       });
   };
 
@@ -40,7 +34,7 @@ class Login extends Component {
     return (
       <div className="container">
         <h1>Login</h1>
-        <form onSubmit={this.handleFormSubmit}>
+        <form autocomplete="off" onSubmit={this.handleFormSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email address:</label>
             <input className="form-control"

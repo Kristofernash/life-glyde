@@ -1,5 +1,6 @@
 import React from "react";
 import "./ProfileNav.css"; 
+import AuthService from '../AuthService';
 let NavItem=require("react-bootstrap/lib/NavItem");
 let Nav=require("react-bootstrap/lib/Nav");
 let NavDropdown=require("react-bootstrap/lib/NavDropdown");
@@ -8,41 +9,53 @@ let Navbar=require("react-bootstrap/lib/Navbar");
 
 
 class ProfileNav extends React.Component{
+  constructor() {
+    super();
+    this.Auth = new AuthService();
+    this.state = {
+    username: "",
+    email: "",
+    pictures:[],
+    loggedIn: true
+  }
+}
+  clickedLogout = () => {
+    this.Auth.logout();
+    this.props.history.replace('/')
+  }
+  
     render(){
         return(
-<Navbar inverse collapseOnSelect>
-  <Navbar.Header>
-    <Navbar.Brand>
-      <a href="#brand">React-Bootstrap</a>
-    </Navbar.Brand>
-    <Navbar.Toggle />
-  </Navbar.Header>
-  <Navbar.Collapse>
-    <Nav>
-      <NavItem eventKey={1} href="#">
-        Link
-      </NavItem>
-      <NavItem eventKey={2} href="#">
-        Link
-      </NavItem>
-      <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-        <MenuItem eventKey={3.1}>Action</MenuItem>
-        <MenuItem eventKey={3.2}>Another action</MenuItem>
-        <MenuItem eventKey={3.3}>Something else here</MenuItem>
-        <MenuItem divider />
-        <MenuItem eventKey={3.3}>Separated link</MenuItem>
-      </NavDropdown>
-    </Nav>
-    <Nav pullRight>
-      <NavItem eventKey={1} href="#">
-        Link Right
-      </NavItem>
-      <NavItem eventKey={2} href="#">
-        Link Right
-      </NavItem>
-    </Nav>
-  </Navbar.Collapse>
-</Navbar>
+<nav class="navbar navbar-expand-lg navbar-light">
+<div class="logo">
+</div>
+<h1 className="life">LIFE</h1><h1 className="glide">GLYDE</h1>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="/profile">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/profile">Profile</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {this.Auth.loggedIn() ? <button onClick= {this.clickedLogout}>Log Out</button>:null}
+          <a class="dropdown-item" button>Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" button>Something else here</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
         )
     }
 }

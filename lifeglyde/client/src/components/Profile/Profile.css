@@ -1,0 +1,9 @@
+img{
+    height:180px;
+    width:180px;
+    background-size:cover;
+}
+.imgPreview{
+display: inline-block;
+float:right;
+}

@@ -1,0 +1,40 @@
+.navbar{
+    background-color:#6b69d6;
+    border-radius:0px;
+}
+.navbar-light .navbar-nav .nav-link {
+    color:white;
+    font-size:15px;
+}
+.navbar-nav{
+float:right;
+}
+.logo{
+    width:80px;
+    height:80px;
+    background-size:cover;
+    background-image: url("../../images/parachute.png");
+}
+
+.logo{
+    width:80px;
+    height:80px;
+    background-size:cover;
+    background-image: url("../../images/parachute.png");
+    margin:5px;
+}
+.life{
+    display: inline-block ;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:100;
+    font-size:20px;
+    color:#c9fdd7;
+}
+.glide{
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:900;
+    font-size:35px;
+    color:white ;
+
+}
