@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import withAuth from '../withAuth';
 import API from '../../utils/API';
-import ImageUploader from './ImageUploader.js';
+//import ImageUploader from './ImageUploader.js';
 import Profileform from './Profileform';
 import AuthService from '../AuthService';
-import "./Profile.css"; 
+import "./Profile.css";
 
 
 
@@ -13,11 +13,11 @@ class Profile extends Component {
     super();
     this.Auth = new AuthService();
     this.state = {
-    username: "",
-    email: "",
-    pictures:[],
-    loggedIn: true
-  }
+      username: "",
+      email: "",
+      pictures: [],
+      loggedIn: true
+    }
   }
 
   clickedLogout = () => {
@@ -32,33 +32,30 @@ class Profile extends Component {
         email: res.data.email
       })
     });
-    this.onDrop=this.onDrop.bind(this);
+    this.onDrop = this.onDrop.bind(this);
   }
+  
   onDrop(picture) {
     this.setState({
-        pictures: this.state.pictures.concat(picture),
+      pictures: this.state.pictures.concat(picture),
     });
-}
+  }
 
   render() {
     return (
-      <div>
-       <div className="container Profile">
+      <div className="container Profile first">
         <h1>Your Profile Page</h1>
         <p >Username: {this.state.username}</p>
         <p>Email: {this.state.email}</p>
-        <ImageUploader
-                withIcon={true}
-                buttonText='Choose images'
-                onChange={this.onDrop}
-                imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                maxFileSize={5242880}
-            />
-        <Profileform userId={this.props.user.id}/>
-        
+{/*         <ImageUploader
+          withIcon={true}
+          buttonText='Choose images'
+          onChange={this.onDrop}
+          imgExtension={['.jpg', '.gif', '.png', '.gif']}
+          maxFileSize={5242880}
+        /> */}
+        <Profileform userId={this.props.user.id} />
       </div>
-      </div>
-
 
     )
   }

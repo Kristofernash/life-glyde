@@ -38,14 +38,14 @@ app.post('/api/login', (req, res) => {
     email: req.body.email
   }).then(user => {
     user.verifyPassword(req.body.password, (err, isMatch) => {
-      if(isMatch && !err) {
+      if (isMatch && !err) {
         let token = jwt.sign({ id: user._id, email: user.email }, 'all sorts of code up in here', { expiresIn: 129600 }); // Sigining the token
-        res.json({success: true, message: "Token Issued!", token: token, user: user});
+        res.json({ success: true, message: "Token Issued!", token: token, user: user });
       } else {
-        res.status(401).json({success: false, message: "Authentication failed. Wrong password."});
+        res.status(401).json({ success: false, message: "Authentication failed. Wrong password." });
       }
     });
-  }).catch(err => res.status(404).json({success: false, message: "User not found", error: err}));
+  }).catch(err => res.status(404).json({ success: false, message: "User not found", error: err }));
 });
 
 // SIGNUP ROUTE
@@ -59,21 +59,72 @@ app.post('/api/signup', (req, res) => {
 // to access
 app.get('/api/user/:id', isAuthenticated, (req, res) => {
   db.User.findById(req.params.id).then(data => {
-    if(data) {
+    if (data) {
       res.json(data);
     } else {
-      res.status(404).send({success: false, message: 'No user found'});
+      res.status(404).send({ success: false, message: 'No user found' });
     }
   }).catch(err => res.status(400).send(err));
 });
 
-app.put("/api/user/:id", (req, res)=> {
-  db.User.findByIdAndUpdate(req.params.id, req.body, {new: true})
-    .then(userDb => {
-      res.json(userDb);
-    }).catch(err => {
-      res.status(400).json(err);
-    });
+app.put('/api/user/:id', isAuthenticated, (req, res) => {
+  let userUpdateObject = req.body;
+  if (userUpdateObject.events) {
+    userUpdateObject = {
+      $push: {
+        events: req.body.events
+      }
+    }
+  }
+  db.User.findByIdAndUpdate(req.params.id, userUpdateObject, { new: true }).then(data => {
+    if (data) {
+      res.json(data);
+    } else {
+      res.status(404).send({ success: false, message: 'No user found' });
+    }
+  }).catch(err => res.status(400).send(err));
+});
+
+app.post('/api/createEvent', (req, res) => {
+  db.Event.create(req.body)
+    .then(data => res.json(data))
+    .catch(err => res.status(400).json(err));
+});
+
+app.get('/api/events', isAuthenticated, (req, res) => {
+  let userFindObject = req.body;
+  if (userFindObject.events) {
+    db.Event.find({ "_id": { $in: [req.body] } }, function (err, docs) {
+      console.log(docs);
+    }).
+      then(data => {
+        if (data) {
+          res.json(data);
+        } else {
+          res.status(404).send({ success: false, message: 'No events found' });
+        }
+      }
+      )
+  }
+  else {
+    db.Event.find(req.query).then(data => {
+      if (data) {
+        res.json(data);
+      } else {
+        res.status(404).send({ success: false, message: 'No events found' });
+      }
+    }).catch(err => res.status(400).send(err));
+  }
+});
+
+app.get('/api/events/:id', isAuthenticated, (req, res) => {
+  db.Event.findById(req.params.id).then(data => {
+    if (data) {
+      res.json(data);
+    } else {
+      res.status(404).send({ success: false, message: 'No user found' });
+    }
+  }).catch(err => res.status(400).send(err));
 });
 
 // Serve up static assets (usually on heroku)
@@ -98,10 +149,10 @@ app.use(function (err, req, res, next) {
 
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });
