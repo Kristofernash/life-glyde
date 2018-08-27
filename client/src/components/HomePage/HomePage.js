@@ -32,8 +32,7 @@ class HomePage extends Component {
                 createEventLink: createEventLinkURL,
                 eventsPageLink: eventsPageLinkURL,
             });
-            console.log(this.state.myEvents)
-/*             this.loadEvents(this.state.myEvents) */
+            /*             this.loadEvents(this.state.myEvents) */
         });
     }
 
@@ -72,15 +71,6 @@ class HomePage extends Component {
                             <div className="App-header">
                                 <h2>Welcome {this.props.user.email}</h2>
                             </div>
-                            <p className="App-intro">
-                                {/* <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button> */}
-                                <Link to={`/profile/${this.props.user.id}`}>Go to Profile</Link>
-                                <button type="button" className="btn btn-primary" onClick={this.goToEventsPage}>Events Page</button>
-                                { "  " }
-                                <button type="button" className="btn btn-primary" onClick={this.goToCreateEvent}>Create New Event</button>
-                                { "  " }
-                                <button type="button" className="btn btn-primary" onClick={this.handleLogout}>Logout</button>
-                            </p>
                         </Col>
                     </Row>
                     <Row>

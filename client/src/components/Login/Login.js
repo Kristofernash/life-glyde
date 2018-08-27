@@ -16,6 +16,7 @@ class Login extends Component {
         // once user is logged in
         // take them to their profile page
         this.props.history.replace(`/homepage`);
+        // window.location.reload("/homepage");
       })
       .catch(err => {
         console.log(err);
