@@ -32,7 +32,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container first">
+      <div className="first">
         <h1>Login</h1>
         <form autoComplete="off" onSubmit={this.handleFormSubmit}>
           <div className="form-group">
