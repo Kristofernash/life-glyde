@@ -54,7 +54,6 @@ handleJoinButton = event => {
       <Container fluid>
         <Row>
           <Col size="md-12 sm-12">
-            <Link to="/HomePage">Go home</Link>
             <button type="submit" className="btn btn-primary" onClick={this.handleJoinButton}>Join Event!</button>
               <List>
                 <ListItem key={this.state._id}>

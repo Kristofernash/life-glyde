@@ -52,7 +52,7 @@ class ProfileNav extends React.Component {
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <Link class="dropdown-item" to="/createEvent">Create Event</Link>
                 <div class="dropdown-divider"></div>
-                {this.Auth.loggedIn() ? <button onClick={this.clickedLogout}>Log Out</button> : null}
+                {this.Auth.loggedIn() ? <Link class="dropdown-item" to="/createEvent">Log Out</Link> : null}
               </div>
             </li>
           </ul>
