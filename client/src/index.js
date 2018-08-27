@@ -23,7 +23,7 @@ if(localStorage.getItem("id_token")) {
 ReactDOM.render(
     <Router>
         <div>
-            <ProfileNav />
+            {(window.location.pathname !== "/") ? <ProfileNav /> : ""}
             <Route exact path="/" component={Site} />
             <Route exact path="/" component={NavBar} />
             <Route exact path="/profile" component={Profile} />

@@ -33,7 +33,7 @@ class ProfileNav extends React.Component{
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <Link className="nav-link" to="/">Home</Link>
+        <Link className="nav-link" to="/homepage">Home</Link>
       </li>
       {(this.Auth.loggedIn()) ?
         <li class="nav-item">
