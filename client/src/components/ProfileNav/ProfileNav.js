@@ -1,6 +1,7 @@
 import React from "react";
 import "./ProfileNav.css"; 
 import AuthService from '../AuthService';
+import {Link} from 'react-router-dom';
 
 class ProfileNav extends React.Component{
   constructor() {
@@ -8,14 +9,15 @@ class ProfileNav extends React.Component{
     this.Auth = new AuthService();
     this.state = {
     username: "",
+    profileLink: "",
     email: "",
     pictures:[],
     loggedIn: true
   }
 }
+
   clickedLogout = () => {
     this.Auth.logout();
-    this.props.history.replace('/')
   }
   
     render(){
@@ -31,20 +33,26 @@ class ProfileNav extends React.Component{
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <a class="nav-link" href="/profile">Home</a>
+        <Link className="nav-link" to="/">Home</Link>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/profile">Profile</a>
+      {(this.Auth.loggedIn()) ?
+        <li class="nav-item">
+          <Link class="nav-link" to={`/profile`}>Profile</Link>
+        </li>
+        :
+        ""
+      }
+      <li class="nav-item ">
+        <Link className="nav-link" to="/events">Events</Link>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" button id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        {this.Auth.loggedIn() ? <button onClick= {this.clickedLogout}>Log Out</button>:null}
-          <a class="dropdown-item" button>Another action</a>
+          <Link class="dropdown-item" to="/createEvent">Create Event</Link>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" button>Something else here</a>
+          {this.Auth.loggedIn() ? <button onClick= {this.clickedLogout}>Log Out</button>:null}
         </div>
       </li>
     </ul>

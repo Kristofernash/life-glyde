@@ -3,8 +3,8 @@ import AuthService from '../AuthService';
 import API from '../../utils/API';
 
 class Signup extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.Auth = new AuthService();
   }
 
@@ -13,9 +13,12 @@ class Signup extends Component {
     API.signUpUser(this.state.username, this.state.email, this.state.password)
       .then(res => {
         console.log(res.data);
+        this.Auth.login(this.state.email, this.state.password).then(() => {
+          this.props.history.replace('/homepage');
+        })
         // once the user has signed up
         // send them to the login page
-        this.props.history.replace('/login');
+       
       })
       .catch(err => alert(err));
   };

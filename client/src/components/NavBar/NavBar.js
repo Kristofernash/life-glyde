@@ -52,7 +52,7 @@ class TemporaryDrawer extends React.Component {
             // onClick={this.toggleDrawer('right', false)}
             // onKeyDown={this.toggleDrawer('right', false)}
           >
-            <SideList classes={classes} loginClicked={this.loginClicked} signupClicked={this.signupClicked} form={this.state.form} />
+            <SideList history={this.props.history} classes={classes} loginClicked={this.loginClicked} signupClicked={this.signupClicked} form={this.state.form} />
           </div>
         </Drawer>
       </div>

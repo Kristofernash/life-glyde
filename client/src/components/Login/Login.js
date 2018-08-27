@@ -15,10 +15,10 @@ class Login extends Component {
       .then(res => {
         // once user is logged in
         // take them to their profile page
-        this.props.history.replace(`/profile/${res.data.user._id}`);
+        this.props.history.replace(`/homepage`);
       })
       .catch(err => {
-        console.log(err.response);
+        console.log(err);
         alert(err.response)
       });
   };
@@ -32,7 +32,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container first">
+      <div className="container">
         <h1>Login</h1>
         <form autoComplete="off" onSubmit={this.handleFormSubmit}>
           <div className="form-group">

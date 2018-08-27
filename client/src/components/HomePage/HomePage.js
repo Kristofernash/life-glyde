@@ -46,7 +46,7 @@ class HomePage extends Component {
 
     handleLogout = () => {
         Auth.logout();
-        this.props.history.replace('/signup');
+        this.props.history.replace('/');
     };
 
     goToEditProfile = () => {
@@ -72,7 +72,8 @@ class HomePage extends Component {
                                 <h2>Welcome {this.props.user.email}</h2>
                             </div>
                             <p className="App-intro">
-                                <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button>
+                                {/* <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button> */}
+                                <Link to={`/profile/${this.props.user.id}`}>Go to Profile</Link>
                                 <button type="button" className="btn btn-primary" onClick={this.goToEventsPage}>Events Page</button>
                                 <button type="button" className="btn btn-primary" onClick={this.goToCreateEvent}>Create New Event</button>
                                 <button type="button" className="btn btn-primary" onClick={this.handleLogout}>Logout</button>
