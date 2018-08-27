@@ -23,54 +23,63 @@ let UserSchema = new Schema({
     required: true
   },
   firstName: {
-    default: 'DNE',
+    default: null,
     type: String,
     trim: true,
     lowercase: true
   },
   lastName: {
-    default: 'DNE',
+    default: null,
     type: String,
     trim: true,
     lowercase: true
   },
   phoneNum: {
-    default: 'DNE',
+    default: null,
     type: String
   },
   profilePic: {
-    default: 'DNE',
+    default: null,
     type: String
   },
   glider: {
-    default: 'DNE',
+    default: null,
     type: String
   },
   ushpaRating: {
-    default: 'DNE',
+    default: null,
     type: String
   },
   medicalInfo: {
-    default: 'DNE',
+    default: null,
     type: String
   },
   emergencyContactName: {
-    default: 'DNE',
+    default: null,
     type: String,
     lowercase: true
   },
   emergencyContactRelation: {
-    default: 'DNE',
+    default: null,
     type: String
   },
   emergencyContactPhone: {
-    default: 'DNE',
+    default: null,
     type: String
   },
+ 
   createdAt: {
     type: Date,
     default: Date.now
-  }
+  },
+  events: [
+    {
+      // Store ObjectIds in the array
+      type: Schema.Types.ObjectId,
+      // The ObjectIds will refer to the ids in the Note model
+      ref: "Event"
+    }
+  ]
 });
 
 // Execute before each user.save() call

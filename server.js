@@ -58,7 +58,9 @@ app.post('/api/signup', (req, res) => {
 // Any route with isAuthenticated is protected and you need a valid token
 // to access
 app.get('/api/user/:id', isAuthenticated, (req, res) => {
-  db.User.findById(req.params.id).then(data => {
+  db.User.findById(req.params.id)
+  .populate("events")
+  .then(data => {
     if (data) {
       res.json(data);
     } else {
@@ -92,9 +94,10 @@ app.post('/api/createEvent', (req, res) => {
 });
 
 app.get('/api/events', isAuthenticated, (req, res) => {
-  let userFindObject = req.body;
-  if (userFindObject.events) {
-    db.Event.find({ "_id": { $in: [req.body] } }, function (err, docs) {
+  let userFindObject = req.body.data;
+  console.log(userFindObject)
+  if (userFindObject) {
+    db.Event.find({ "_id": { $in: req.body.data } }, function (err, docs) {
       console.log(docs);
     }).
       then(data => {
