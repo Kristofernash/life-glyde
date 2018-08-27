@@ -28,7 +28,6 @@ class Events extends Component {
           <Row>
             <Col size="md-12 sm-12">
               <h1>Upcoming Events</h1>
-              <Link to="/HomePage">Go home</Link>
               {this.state.events.length ? (
                 <List>
                   {this.state.events.map(event => (
