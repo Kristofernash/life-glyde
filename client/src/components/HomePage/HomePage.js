@@ -32,21 +32,21 @@ class HomePage extends Component {
                 createEventLink: createEventLinkURL,
                 eventsPageLink: eventsPageLinkURL,
             });
-            this.loadEvents(this.state.myEvents)
+            /*             this.loadEvents(this.state.myEvents) */
         });
     }
 
-    loadEvents = (myEvents) => {
+/*     loadEvents = (myEvents) => {
         API.getEvents(myEvents)
             .then(res => this.setState({ events: [...res.data] },
                 console.log(res.data)))
             .catch(err => console.log(err));
-    };
+    }; */
 
 
     handleLogout = () => {
         Auth.logout();
-        this.props.history.replace('/signup');
+        this.props.history.replace('/');
     };
 
     goToEditProfile = () => {
@@ -71,21 +71,14 @@ class HomePage extends Component {
                             <div className="App-header">
                                 <h2>Welcome {this.props.user.email}</h2>
                             </div>
-                            <p className="App-intro">
-                                <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button>
-                                <button type="button" className="btn btn-primary" onClick={this.goToEventsPage}>Events Page</button>
-                                <button type="button" className="btn btn-primary" onClick={this.goToCreateEvent}>Create New Event</button>
-                                <button type="button" className="btn btn-primary" onClick={this.handleLogout}>Logout</button>
-                            </p>
                         </Col>
                     </Row>
                     <Row>
                         <Col size="md-12 sm-12">
                             <h2>My Events</h2>
-                            <Link to="/HomePage">Go home</Link>
-                            {this.state.events.length ? (
+                            {this.state.myEvents.length ? (
                                 <List>
-                                    {this.state.events.map(event => (
+                                    {this.state.myEvents.map(event => (
                                         <ListItem key={event._id}>
                                             <Link to={"/events/" + event._id}>
                                                 <strong>Event:</strong> {event.eventname} <br></br>

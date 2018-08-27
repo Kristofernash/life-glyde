@@ -37,16 +37,30 @@
     border-width:6px;
     color:#313030;
 }
+#greenBtn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+    background-color:#6b69d6;
+ }
+
 #purpleBtn:hover{
     background-color:white;
     border-color:#c9fdd7;
     border-width:6px;
     color:#313030;
 }
+#purpleBtn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+    background-color:#c9fdd7;
+ }
 .cornerBtn{
-    border-radius: 50px 20px;
+    border-radius: 12px 0 0 12px;
     background-color:#6b69d6;
+    border: none;
     position:absolute;
     top:0;
     right:0;
+    color:white;
+    outline: 0;
 }

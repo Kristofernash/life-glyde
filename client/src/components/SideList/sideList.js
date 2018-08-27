@@ -6,7 +6,7 @@ import Signup from "../SignUp/Signup";
 
 
 const SideList = props => {
-    const { classes, form, loginClicked, signupClicked } = props;
+    const { classes, form, loginClicked, signupClicked, history } = props;
     return (
     <div className={classes.list}>
         <List>
@@ -21,7 +21,7 @@ const SideList = props => {
             </div>
         </List>
         <Divider />
-        {form ? <Signup /> : <Login />}
+        {form ? <Signup history={history}/> : <Login history={history}/>}
     </div>
 )
 };

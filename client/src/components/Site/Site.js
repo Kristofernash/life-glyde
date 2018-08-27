@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Site.css";
 import LandingPage from "../LandingPage";
+import AuthService from '../AuthService';
 
 
 class Site extends Component {
