@@ -76,7 +76,6 @@ class HomePage extends Component {
                     <Row>
                         <Col size="md-12 sm-12">
                             <h2>My Events</h2>
-                            <Link to="/HomePage">Go home</Link>
                             {this.state.myEvents.length ? (
                                 <List>
                                     {this.state.myEvents.map(event => (
