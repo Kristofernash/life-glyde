@@ -44,7 +44,7 @@ class TemporaryDrawer extends React.Component {
 
     return (
       <div> 
-        <Button class="cornerBtn" onClick={this.toggleDrawer('right', true)}>Open Right</Button>
+        <Button class="cornerBtn" onClick={this.toggleDrawer('right', true)}>Login/Signup</Button>
         <Drawer anchor="right" open={this.state.right} onClose={this.toggleDrawer('right', false)}>
           <div
             tabIndex={0}
